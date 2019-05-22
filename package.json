@@ -16,8 +16,12 @@
     "command-line",
     "nodejs"
   ],
-  "author": "",
+  "repository": "github:maartenbrakkee/meow-help",
+  "author": "Maarten Brakee <maarten@zeroten.nl>",
   "license": "MIT",
+  "engines": {
+		"node": ">=8"
+	},
   "dependencies": {
     "chalk": "^2.4.2",
     "cli-table3": "^0.5.1",
