@@ -2,28 +2,21 @@
 
 require("core-js/modules/es.symbol.description");
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = meowHelp;
+
 const chalk = require("chalk");
 
-const normalizePackageData = require("normalize-package-data");
+const returnPackageCommand = require("./pkg-cmd");
 
-const path = require("path");
+const Table = require("cli-table3");
 
-const readPkgUp = require("read-pkg-up");
-
-const Table = require("cli-table3"); // Prevent caching of this module so module.parent is always accurate
-
-
-delete require.cache[__filename];
-const parentDir = path.dirname(module.parent.filename);
+const command = returnPackageCommand();
 
 function meowHelp(flags, description = "") {
   let help = "";
-  let pkg = readPkgUp.sync({
-    cwd: parentDir,
-    normalize: false
-  }).package || {};
-  normalizePackageData(pkg);
-  let command = typeof pkg.bin !== "undefined" ? Object.keys(pkg.bin)[0] : "meow-help";
 
   if (description !== "") {
     help += chalk`{bold.underline Description}\n\n${description}\n\n`;
@@ -31,22 +24,21 @@ function meowHelp(flags, description = "") {
 
   help += chalk`{bold.underline Usage}\n\n{gray $} ${command} {green <input>} {yellow <options>}\n\n{bold.underline Options}\n\n`;
   let table = createTable();
+  const flagKeys = Object.keys(flags);
 
-  for (var flag in flags) {
-    if (flags.hasOwnProperty(flag)) {
-      let options = flags[flag];
-      let alias = typeof options.alias !== "undefined" ? `-${options.alias}, ` : "";
-      let defaultValue = "";
-      let defaultText = "Defaults to";
+  for (const flag of flagKeys) {
+    let options = flags[flag];
+    let alias = typeof options.alias !== "undefined" ? `-${options.alias}, ` : "";
+    let defaultValue = "";
+    let defaultText = "Defaults to";
 
-      if (typeof options.default !== "undefined") {
-        defaultValue = ` ${defaultText} ${chalk.cyan(`"${options.default}"`)}.`;
-      } else if (options.type === "boolean") {
-        defaultValue = ` ${defaultText} ${chalk.cyan("false")}.`;
-      }
-
-      table.push([chalk`{yellow ${alias}--${flag}}`, `${options.description}${defaultValue}`]);
+    if (typeof options.default !== "undefined") {
+      defaultValue = ` ${defaultText} ${chalk.cyan(`"${options.default}"`)}.`;
+    } else if (options.type === "boolean") {
+      defaultValue = ` ${defaultText} ${chalk.cyan("false")}.`;
     }
+
+    table.push([chalk`{yellow ${alias}--${flag}}`, `${options.description}${defaultValue}`]);
   }
 
   help += table.toString();
