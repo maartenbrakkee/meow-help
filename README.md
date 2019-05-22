@@ -49,6 +49,9 @@ Returns a `String` that can be passed as `helpText` to [meow](https://github.com
 | flags | `Object` | ✅ | Flags object for meow, extended with descriptions. |
 | description | `String` | ❌ | Extra description text shown when `--help` is called. |
 
+## Screenshot
+
+![meow-help cmder example](meow-help.png)
 
 ## License
 
