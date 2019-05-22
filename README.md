@@ -1,4 +1,4 @@
-# meow-help [![Build Status](https://travis-ci.org/maartenbrakkee/meow-help.svg?branch=master)](https://travis-ci.org/maartenbrakkee/meow-help)
+# meow-help [![Build Status](https://travis-ci.org/maartenbrakkee/meow-help.svg?branch=master)](https://travis-ci.org/maartenbrakkee/meow-help) [![Coverage Status](https://coveralls.io/repos/github/maartenbrakkee/meow-help/badge.svg?branch=master)](https://coveralls.io/github/maartenbrakkee/meow-help?branch=master)
 
 > Help text generator for [meow](https://github.com/sindresorhus/meow).
 
