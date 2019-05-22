@@ -22,8 +22,8 @@ module.exports = {
     "eqeqeq": ["error", "always"],
     // we use soft tabs of 2 spaces
     "indent": ["error", 2],
-    // linebreaks are Windows based
-    "linebreak-style": ["error", "windows"],
+    // linebreaks are Unix based
+    "linebreak-style": ["error", "unix"],
     // Disable no-console rule
     "no-console": "off",
     // Disallow Functions in Loops
