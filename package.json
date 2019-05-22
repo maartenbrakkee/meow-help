@@ -1,6 +1,6 @@
 {
   "name": "meow-help",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Generate help text for meow.",
   "main": "./dist/index.js",
   "scripts": {
