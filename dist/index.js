@@ -23,7 +23,7 @@ function meowHelp(flags, description = "") {
     normalize: false
   }).package || {};
   normalizePackageData(pkg);
-  let command = Object.keys(pkg.bin)[0];
+  let command = typeof pkg.bin !== "undefined" ? Object.keys(pkg.bin)[0] : "meow-help";
 
   if (description !== "") {
     help += chalk`{bold.underline Description}\n\n${description}\n\n`;
@@ -70,11 +70,11 @@ function createTable() {
       "mid-mid": "",
       "right": "",
       "right-mid": "",
-      "middle": " "
+      "middle": ""
     },
     style: {
       "padding-left": 0,
-      "padding-right": 1
+      "padding-right": 2
     },
     wordWrap: true
   });

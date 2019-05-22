@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir dist",
     "lint:js": "./node_modules/.bin/eslint ./src/**/*.js",
-    "test": "npm run lint:js"
+    "test": "npm run lint:js && ava"
   },
   "keywords": [
     "meow",
@@ -33,6 +33,9 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "eslint": "^5.16.0"
+    "ava": "^1.4.1",
+    "coveralls": "^3.0.3",
+    "eslint": "^5.16.0",
+    "nyc": "^14.1.1"
   }
 }

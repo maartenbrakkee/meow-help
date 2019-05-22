@@ -18,7 +18,7 @@ function meowHelp(flags, description = "") {
   }).package || {};
 
   normalizePackageData(pkg);
-  let command = Object.keys(pkg.bin)[0];
+  let command = (typeof pkg.bin !== "undefined") ? Object.keys(pkg.bin)[0] : "meow-help";
 
   if (description !== "") {
     help += chalk`{bold.underline Description}\n\n${description}\n\n`;
@@ -58,11 +58,11 @@ function createTable() {
       "top": "", "top-mid": "", "top-left": "", "top-right": "",
       "bottom": "", "bottom-mid": "", "bottom-left": "", "bottom-right": "",
       "left": "", "left-mid": "", "mid": "", "mid-mid": "",
-      "right": "", "right-mid": "", "middle": " "
+      "right": "", "right-mid": "", "middle": ""
     },
     style: {
       "padding-left": 0,
-      "padding-right": 1
+      "padding-right": 2
     },
     wordWrap: true,
   });

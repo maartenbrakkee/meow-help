@@ -20,12 +20,12 @@ $ npm install meow-help
 ```js
 const meowHelp = require("meow-help");
 const meow = require("meow");
-const foo = require('.');
+const foo = require(".");
 
 const flags = {
   rainbow: {
-    type: 'boolean',
-    alias: 'r',
+    type: "boolean",
+    alias: "r",
     description: "Include a rainbow."
   }
 }
